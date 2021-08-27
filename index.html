@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 
-<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+<style>
+  main {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  canvas {
+    margin: auto;
+  }
+</style>
+
 <script type="module">
   import * as sketch from "./sketch.js";
   
+  window.draw = sketch.draw;
+  window.setup = sketch.setup;
   
+  import("https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js");
 </script>
 
 <main></main>
