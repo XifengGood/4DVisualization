@@ -1,8 +1,11 @@
 /* eslint-disable */
 
-export function setup() {
-  createCanvas(300, 300);
-  background(220);
+function setup() {
   
-  let button = createButton("aa");
 }
+
+function draw() {
+  
+}
+
+export { setup, draw };
