@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <style>
-  main {
+  html {
     display: flex;
     position: fixed;
     top: 0;
@@ -10,18 +10,15 @@
     right: 0;
   }
   
-  canvas {
+  body {
     margin: auto;
   }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 <script type="module">
   import * as sketch from "./sketch.js";
-  
-  window.draw = sketch.draw;
-  window.setup = sketch.setup;
-  
-  import("https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js");
+  for (let func in sketch) window[func] = sketch[func];
 </script>
 
 <main></main>
