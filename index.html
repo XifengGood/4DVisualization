@@ -16,9 +16,12 @@
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+
 <script type="module">
   import * as sketch from "./sketch.js";
   for (let func in sketch) window[func] = sketch[func];
+  
+  if (document.readyState == "complete" && wn)
 </script>
 
 <main></main>

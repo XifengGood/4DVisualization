@@ -5,13 +5,6 @@ Click `Show` in the header to see your app live. Updates to your code will insta
 
 **Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
 
-Find out more [about Glitch](https://glitch.com/about).
-
-Need more power?  
-[Boost your Glitch apps for improved performance!](https://glitch.com/boost)  
-------------
-***
-
 
 
 Your Project
@@ -23,19 +16,15 @@ That's this file, where you can tell people what your cool website does and how 
 
 ### ← index.html
 
-Where you'll write the content of your website. 
+This
 
-### ← style.css
+### ← sketch.js
 
-CSS files add styling rules to your content.
-
-### ← script.js
-
-If you're feeling fancy you can add interactivity to your site with JavaScript.
+This is where you'll make your main page.
 
 ### ← assets
 
-Drag in `assets`, like images or music, to add them to your project
+Drag in `assets`, like images or music, to add them to your project.
 
 Made by [Glitch](https://glitch.com/)
 -------------------
