@@ -17,11 +17,25 @@
 
 <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 
+<script>
+  window.rgb = function () {
+    let color = color(...arguments);
+    
+    return `#${color._getRed().toString(16).padStart(2, "0")}${color._getGreen().toString(16).padStart(2, "0")}${color._getBlue().toString(16).padStart(2, "0")}`;
+  };
+  
+  window.background = function () {
+    document.documentElement.style.background = rgb(...arguments);
+    
+    return p5.prototype.background.apply(window, arguments);
+  };
+</script>
+
 <script type="module">
   import * as sketch from "./sketch.js";
   for (let func in sketch) window[func] = sketch[func];
   
-  if (document.readyState == "complete" && wn)
+  
 </script>
 
 <main></main>
