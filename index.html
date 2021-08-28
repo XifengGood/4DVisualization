@@ -9,33 +9,49 @@
     bottom: 0;
     right: 0;
   }
-  
+
   body {
     margin: auto;
   }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
 
 <script>
-  window.rgb = function () {
-    let color = color(...arguments);
-    
-    return `#${color._getRed().toString(16).padStart(2, "0")}${color._getGreen().toString(16).padStart(2, "0")}${color._getBlue().toString(16).padStart(2, "0")}`;
+  window.rgb = function() {
+    let color = window.color(...arguments);
+
+    let red = color
+      ._getRed()
+      .toString(16)
+      .padStart(2, "0");
+
+    let green = color
+      ._getGreen()
+      .toString(16)
+      .padStart(2, "0");
+
+    let blue = color
+      ._getBlue()
+      .toString(16)
+      .padStart(2, "0");
+
+    return `#${red}${green}${blue}`;
   };
-  
-  window.background = function () {
-    document.documentElement.style.background = rgb(...arguments);
-    
-    return p5.prototype.background.apply(window, arguments);
-  };
+
+  Object.defineProperty(window, "background", {
+    get: () => function() {
+      document.documentElement.style.background = rgb(...arguments);
+
+      return p5.prototype.background.apply(p5.instance, arguments);
+    },
+    set: () => {}
+  });
 </script>
 
 <script type="module">
   import * as sketch from "./sketch.js";
   for (let func in sketch) window[func] = sketch[func];
-  
-  
 </script>
 
 <main></main>
