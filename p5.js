@@ -8,7 +8,7 @@ function onresize() {
   if (canvas.length) {
     let width = canvas[0].style.width;
     let height = canvas[0].style.height;
-    
+
     width = +width.substr(0, width.length - 2);
     height = +height.substr(0, height.length - 2);
 
@@ -19,6 +19,15 @@ function onresize() {
     document.documentElement.style.setProperty("--y", y);
   }
 }
+
+Object.defineProperty(window, "background", {
+  get() {
+    return (...args) => {
+      
+    };
+  },
+  set() {}
+});
 
 window.addEventListener("resize", onresize);
 setInterval(onresize, 100);
