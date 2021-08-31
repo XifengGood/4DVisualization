@@ -1,3 +1,10 @@
-export function abc() {
-createCanvas(200);
+/* eslint-disable */
+
+export function setup() {
+  createCanvas(500, 500);
+  background(220);
+}
+
+export function draw() {
+  
 }
