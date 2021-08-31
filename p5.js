@@ -20,10 +20,28 @@ function onresize() {
   }
 }
 
+function rgb(...args) {
+  let c = color(...args);
+
+  return `#${c
+    ._getRed()
+    .toString(16)
+    .padStart(2, "0")}${c
+    ._getGreen()
+    .toString(16)
+    .padStart(2, "0")}${c
+    ._getBlue()
+    .toString(16)
+    .padStart(2, "0")}`;
+}
+
 Object.defineProperty(window, "background", {
   get() {
     return (...args) => {
-      
+      let c = color(...args);
+
+      document.documentElement.style.background = rgb(c);
+      return p5.prototype.background.call(p5.instance, c);
     };
   },
   set() {}
