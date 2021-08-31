@@ -1,12 +1,3 @@
-/* eslint-disable */
-
-function setup() {
-  createCanvas(500, 500);
-  background(220);
+export function abc() {
+createCanvas(200);
 }
-
-function draw() {
-  rect(0, 0, 100, 100);
-}
-
-export { setup, draw };
