@@ -6,7 +6,7 @@ import * as sketch from "./sketch.js";
 for (let func in sketch)
   window[func] =
     typeof transforms[func] == "function"
-      ? transforms(sketch[func])
+      ? transforms[func](sketch[func])
       : sketch[func];
 
 let canvas = document.getElementsByClassName("p5Canvas");

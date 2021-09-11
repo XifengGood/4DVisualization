@@ -1,14 +1,29 @@
 let canvas = document.getElementsByClassName("p5Canvas");
+
+function pxToCoords(px, py) {
+  if (canvas.length) {
+    let x, y;
+
+    try {
+      x = document.documentElement.style.getPropertyValue("--x");
+      y = document.documentElement.style.getPropertyValue("--y");
+
+      x = +x.substr(0, x.length - 2);
+      y = +y.substr(0, y.length - 2);
+    } catch {
+      return null;
+    }
+
+    return [Math.round(px - x), Math.round(py - y)];
+  }
+
+  return null;
+}
+
 export function mousePressed(callback) {
   return ({ clientX, clientY }) => {
-    if (canvas.length) {
-      let width = canvas[0].style.width;
-      let height = canvas[0].style.height;
-      let x = document.documentElement.style.getPropertyValue("--x");
-      let y = document.documentElement.style.getPropertyValue("--y");
+    let c = pxToCoords(clientX, clientY);
 
-      width = +width.substr(0, width.length - 2) ++ x.substr(0, x.length - 2);
-      height = +height.substr(0, height.length - 2) ++ y.substr(0, y.leng);
-    }
+    if (c) callback(...c);
   };
 }
