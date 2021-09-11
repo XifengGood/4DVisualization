@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 let canvas = document.getElementsByClassName("p5Canvas");
 
 function pxToCoords(px, py) {
@@ -26,4 +28,44 @@ export function mousePressed(callback) {
 
     if (c) callback(...c);
   };
+}
+
+export function mouseMoved(callback) {
+  return ({clientX,clientY}) => {
+    let c = pxToCoords(clientX, clientY);
+
+    if (c) callback(...c);
+  }
+}
+
+export function mouseDragged(callback) {
+  return ({clientX,clientY}) => {
+    let c = pxToCoords(clientX, clientY);
+
+    if (c) callback(...c);
+  }
+}
+
+export function mouseReleased(callback) {
+  return ({clientX,clientY}) => {
+    let c = pxToCoords(clientX, clientY);
+
+    if (c) callback(...c);
+  }
+}
+
+export function mouseClicked(callback) {
+  return ({clientX,clientY}) => {
+    let c = pxToCoords(clientX, clientY);
+
+    if (c) callback(...c);
+  }
+}
+
+export function doubleClicked(callback) {
+  return ({clientX,clientY}) => {
+    let c = pxToCoords(clientX, clientY);
+
+    if (c) callback(...c);
+  }
 }

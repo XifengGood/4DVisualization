@@ -4,7 +4,7 @@ import * as transforms from "./p5-transforms.js";
 import * as sketch from "./sketch.js";
 
 for (let func in sketch)
-  window[func] =
+  window[func.substr(0, 2) == "on" ? func.toLowerCase() : func] =
     typeof transforms[func] == "function"
       ? transforms[func](sketch[func])
       : sketch[func];
@@ -12,6 +12,7 @@ for (let func in sketch)
 let canvas = document.getElementsByClassName("p5Canvas");
 function onresize() {
   if (canvas.length) {
+    canvas[0].style.display = "block";
     let width = canvas[0].style.width;
     let height = canvas[0].style.height;
 

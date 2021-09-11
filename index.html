@@ -8,13 +8,18 @@
     left: 0;
     bottom: 0;
     right: 0;
+    background: #dcdcdc;
   }
 
   body {
     margin: 0;
     user-select: none;
   }
-  
+
+  canvas {
+    display: none;
+  }
+
   canvas, body > :not(main) {
     transform: translate(var(--x), var(--y));
   }
