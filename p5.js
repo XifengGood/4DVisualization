@@ -1,7 +1,13 @@
 /* eslint-disable */
 
+import * as transforms from "./p5-transforms.js";
 import * as sketch from "./sketch.js";
-for (let func in sketch) window[func] = sketch[func];
+
+for (let func in sketch)
+  window[func] =
+    typeof transforms[func] == "function"
+      ? transforms(sketch[func])
+      : sketch[func];
 
 let canvas = document.getElementsByClassName("p5Canvas");
 function onresize() {
