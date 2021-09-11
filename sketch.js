@@ -1,14 +1,11 @@
 /* eslint-disable */
 
 export function setup() {
-  createCanvas(innerWidth, innerHeight);
+  createCanvas(500, 500);
   background(220);
 }
 
 export function draw() {
-  rect(50, 50, width - 100, height - 100);
-}
-
-export function onResize() {
-  resizeCanvas(innerWidth, innerHeight);
+  background(220);
+  rect(50, 50, 400, 400);
 }
