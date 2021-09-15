@@ -1,5 +1,4 @@
 /// <reference types="@types/p5/global" />
-/* eslint-disable */
 
 export function setup() {
   createCanvas(500, 500);
