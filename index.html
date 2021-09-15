@@ -1,32 +1,35 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <title>My Sketch</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
+    <script src="./p5/index.js" type="module"></script>
 
-<style>
-  html {
-    overflow: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: #dcdcdc;
-  }
+    <style>
+      html {
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #dcdcdc;
+      }
 
-  body {
-    margin: 0;
-    user-select: none;
-  }
+      body {
+        margin: 0;
+        user-select: none;
+      }
 
-  canvas {
-    display: none;
-  }
-
-/*   canvas, body > :not(main) {
-    transform: translate(var(--x), var(--y));
-  } */
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
-<script src="./p5/index.js" type="module"></script>
-
-<main></main>
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <main></main>
+  </body>
+</html>
