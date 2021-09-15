@@ -1,7 +1,7 @@
 /* eslint-disable */
 
-import * as transforms from "/p5/transforms.js";
-import * as sketch from "/sketch/index.js";
+import * as transforms from "./transforms.js";
+import * as sketch from "../sketch/index.js";
 
 for (let func in sketch)
   window[func.substr(0, 2) == "on" ? func.toLowerCase() : func] =
