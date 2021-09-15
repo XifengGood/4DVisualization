@@ -1,4 +1,4 @@
-/// <reference path="../node_modules/@types/p5/global.d.ts" />
+/// <reference types="@types/p5/global" />
 /* eslint-disable */
 
 export function setup() {
