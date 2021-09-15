@@ -1,4 +1,4 @@
-/// <reference types="@types/p5/global" />
+/// <reference types=".." />
 
 export function setup() {
   createCanvas(500, 500);
