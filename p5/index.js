@@ -50,8 +50,7 @@ Object.defineProperty(window, "background", {
       document.documentElement.style.background = rgb(c);
       return p5.prototype.background.call(p5.instance, c);
     };
-  },
-  set() {}
+  }
 });
 
 window.addEventListener("resize", onresize);
