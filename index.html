@@ -2,11 +2,21 @@
 <html>
   <head>
     <title>My Sketch</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
-    <script src="./p5/index.js" type="module"></script>
+    <script type="module">
+      import * as sketch from "./sketch/index.js";
+
+      for (let func in sketch)
+        window[func.substr(0, 2) == "on" ? func.toLowerCase() : func] =
+          sketch[func];
+    </script>
 
     <style>
       html {
