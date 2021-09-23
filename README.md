@@ -13,7 +13,7 @@ That's this file, where you can tell people what your cool website does and how 
 
 This folder contains your sketch (aka the code that draws stuff).
 This is where you'll make your script for your game.
-If you need to use several files, add more .js files and `import` them into your project.
+If you need to use several files, add more .ts files and `import` them into your project.
 
 ### ← .eslintrc.json
 
@@ -23,19 +23,16 @@ You won't need to edit it.
 ### ← .gitignore
 
 This file tells your computer not to send certain files to Glitch.
-We'll learn about this in Lesson 5.
 You won't need to edit it.
 
 ### ← index.d.ts
 
 This file helps VSCode's JavaScript language service check you code properly.
-We'll learn about this in Lesson 5.
 You won't need to edit it.
 
-### ← jsconfig.json
+### ← tsconfig.json
 
-This file helps VSCode's JavaScript language service check you code properly.
-We'll learn about this in Lesson 5.
+This file helps VSCode's TavaScript language service check you code properly. It also gives TypeScript settings to compile your project with.
 You won't need to edit it.
 
 ### ← index.html
