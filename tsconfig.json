@@ -3,7 +3,9 @@
     "types": ["."],
     "strict": true,
     "module": "ESNext",
-    "target": "ESNext"
+    "target": "ESNext",
+    "rootDir": "sketch",
+    "outDir": "output"
   },
   "exclude": ["node_modules"]
 }
