@@ -3,7 +3,19 @@
 Click `Show` in the header to see your app live.
 Updates to your code will instantly deploy and update live.
 
-## Your Project
+## Working on your project locally
+
+To work on your project locally, `git clone` the URL under `Tools > Import and Export > Your project's Git URL`. Then, make changes, commit them, push to remote, yada yada, and repeat.
+
+## Compiling your project
+
+Because Glitch will convert this into a non-static site if the root has a package.json, all compiling must be done on a local computer. Use the `tsc -w` command to watch the project directory for any changes.
+
+In order for TypeScript to understand that you are using the `p5` library and provide documentation and error checking for general functions, install the `@types/p5` package into your project using `npm i @types/p5`.
+
+If you use Visual Studio Code or another editor with TypeScript installed, errors in your TypeScript code will show up directly in the editor.
+
+## Your project
 
 ### ← README.md
 
