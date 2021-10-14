@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>My p5ts Project</title>
+    <title>My p5.js Project</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
     <script type="module">
       import * as sketch from "./output/index.js";
 
-      for (let func in sketch)
-        window[func.substr(0, 2) == "on" ? func.toLowerCase() : func] =
-          sketch[func];
+      for (let func in sketch) window[func] = sketch[func];
     </script>
 
     <style>
@@ -23,7 +21,7 @@
         left: 0;
         bottom: 0;
         right: 0;
-        background: #dcdcdc;
+        background: transparent;
       }
 
       body {
