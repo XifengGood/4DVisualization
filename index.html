@@ -1,40 +1,451 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>My p5.js Project</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="zh-CN">
 
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/addons/p5.sound.min.js"></script>
-    <script type="module">
-      import * as sketch from "./output/index.js";
-
-      for (let func in sketch) window[func] = sketch[func];
-    </script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/figure.css">
+    <link rel="stylesheet" href="css/select.css">
+    <title>四维空间</title>
     <style>
-      html {
-        overflow: hidden;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background: transparent;
-      }
+        a:link,
+        a:visited {
+            display: block;
+            font-weight: bold;
+            color: #FFFFFF;
+            background-color: #98bf21;
+            width: 120px;
+            text-align: center;
+            padding: 4px;
+            text-decoration: none;
+        }
 
-      body {
-        margin: 0;
-        user-select: none;
-      }
-
-      canvas {
-        display: block;
-      }
+        a:hover,
+        a:active {
+            background-color: #7A991A;
+        }
     </style>
-  </head>
-  <body>
-    <main></main>
-  </body>
+</head>
+
+<body>
+    <div style="margin: auto;max-width: 750px;padding: 1rem;">
+        <h1>四维空间</h1>
+        <p>什么是四维空间？简单来说就是由四个垂直方向构成的空间。这种空间也称欧几里得四维空间。概念是抽象的，物体是具象的。我们可以从基础的四维几何体来理解四维空间。超立方体可以说是最为简单而且好理解的超几何体了。</p>
+        <h1>超立方体</h1>
+        <div>
+            <p>可拖动旋转</p>
+            <canvas class="center" id="tesseract" width="500" height="500"></canvas>
+        </div>
+        <h1>构建超立方体</h1>
+        <div>
+            <p>零维空间可以被看作是一个点，它没有可以延伸的方向。</p>
+            <canvas class="center" id="zero-dimension" width="100" height="50"></canvas>
+            <p>在一维空间则是一条无限长的线。就像是无数个零维空间叠加起来的一样。</p>
+            <p>你可以拖动下面的滑动条将一个点延伸为一条线。</p>
+            <canvas class="center" id="one-dimension" width="200" height="100"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="one-dimension-x-range" type="range" min="0" max="50" value="0" class="slider">
+                </div>
+            </div>
+            <p>二维空间则是一个无限延伸的平面。就像是无数个一维空间叠加起来的一样。</p>
+            <p>你可以拖动下面的滑动条将一条线延伸为一个矩形。</p>
+            <canvas class="center" id="two-dimension"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="two-dimension-y-range" type="range" min="0" max="50" value="0" class="slider">
+                </div>
+            </div>
+            <p>三维空间则是一个无限大的空间。就像是无数个二维空间叠加起来的一样。它有长度、宽度和深度的概念。</p>
+            <p>你可以拖动下面的滑动条将一个矩形延伸为一个长方体。</p>
+            <canvas class="center" id="three-dimension"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="three-dimension-z-range" type="range" min="0" max="1" value="0" step="0.01"
+                        class="slider">
+                </div>
+            </div>
+
+            <p>四维空间就比较抽象了。因为我们生活在三维空间，难以在脑中想象四维空间的样子，但可以通过上面的类推，我们大致能推断四维空间是由无数三维空间叠加的。理论可能如此，但还是这样说起来还是比较抽象。</p>
+            <p>你可以拖动下面的滑动条将一个长方体延伸为一个超立方体。</p>
+            <canvas class="center" id="four-dimension"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="four-dimension-w-range" type="range" min="0" max="1" value="0" step="0.01"
+                        class="slider">
+                </div>
+            </div>
+        </div>
+        <h1>超挤出</h1>
+        <div>
+            <p>从上面的类比我们可以得到如下数据。</p>
+            <figure>
+                <table cellpadding="10">
+                    <thead>
+                        <tr>
+                            <th class="has-text-align-center" data-align="center">n</th>
+                            <th class="has-text-align-center" data-align="center">名称</th>
+                            <th class="has-text-align-center" data-align="center">顶点</th>
+                            <th class="has-text-align-center" data-align="center">边</th>
+                            <th class="has-text-align-center" data-align="center">面</th>
+                            <th class="has-text-align-center" data-align="center">胞</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">0</td>
+                            <td class="has-text-align-center" data-align="center">点</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>1</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">1</td>
+                            <td class="has-text-align-center" data-align="center">线段</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>2</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>1</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">2</td>
+                            <td class="has-text-align-center" data-align="center">正方形</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>4</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>4</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>1</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center"></td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">3</td>
+                            <td class="has-text-align-center" data-align="center">立方体</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>8</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>12</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>6</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>1</mn>
+                                </math>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">4</td>
+                            <td class="has-text-align-center" data-align="center">超立方体</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>16</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>32</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>24</mn>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mn>8</mn>
+                                </math>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="has-text-align-center" data-align="center">n</td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mi>n</mi>
+                                    <mo>−</mo>
+                                    <mo>立方体</mo>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mi>n</mi>
+                                    </msup>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center"><math
+                                    xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mi>n</mi>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>−</mo>
+                                            <mn>1</mn>
+                                        </mrow>
+                                    </msup>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mi>n</mi>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>n</mi>
+                                    <mo>−</mo>
+                                    <mn>1</mn>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>−</mo>
+                                            <mn>3</mn>
+                                        </mrow>
+                                    </msup>
+                                </math>
+                            </td>
+                            <td class="has-text-align-center" data-align="center">
+                                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                                    <mfrac>
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>n</mi>
+                                            <mo>−</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>n</mi>
+                                            <mo>−</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mn>3</mn>
+                                    </mfrac>
+                                    <mo>⋅</mo>
+                                    <msup>
+                                        <mn>2</mn>
+                                        <mrow>
+                                            <mi>n</mi>
+                                            <mo>−</mo>
+                                            <mn>4</mn>
+                                        </mrow>
+                                    </msup>
+                                </math>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
+            <p>构建四维超几何物体最通用和简单的方法就是将三维物体进行四维挤出，就像我们用二维物体构建三维物体一样。</p>
+            <b>值得注意的是球体的四维挤出并不是超球体，尽管它是一个超几何体。</b>
+        </div>
+        <h1>四维到三维</h1>
+        <div>我们身处三维，所以只能感受三维的物体。要感受四维的物体就需要我们用一定的方法将它们转化到三维空间。主要的方法有：正交投影、透视投影和截面法。</div>
+        <h1>正交投影</h1>
+        <div>
+            <p>立方体投影到平面</p>
+            <p>此处的投影相机和观察相机都为正交相机</p>
+            <canvas class="center" id="three-dimension-ortho"></canvas>
+            <p>超立方体投影到三维空间</p>
+            <p>此处的四维相机和三维相机都为正交相机</p>
+            <canvas class="center" id="four-dimension-ortho"></canvas>
+        </div>
+        <h1>透视投影</h1>
+        <div>
+            <p>立方体二维平面展开</p>
+            <p>下面是一种常见的立方体平面展开方式</p>
+            <canvas class="center" id="cube-unfold"></canvas>
+            <p>超立方体三维空间展开</p>
+            <p>类比立方体在平面的展开，下面为超立方体在三维空间的展开</p>
+            <canvas class="center" id="tesseract-unfold" width="500" height="500"></canvas>
+            <p>立方体的六个面</p>
+            <p>立方体在三维空间用了六个侧面包围出一块三维空间</p>
+            <canvas class="center" id="three-dimension-perspect-cube-face"></canvas>
+            <div class="toggle_controller" id="three-dimension-perspect-cube-face-switches">
+                <div class="switch selected" index=0>
+                    <p> </p>
+                </div>
+                <div class="switch" index=1>
+                    <p>1</p>
+                </div>
+                <div class="switch" index=2>
+                    <p>2</p>
+                </div>
+                <div class="switch" index=3>
+                    <p>3</p>
+                </div>
+                <div class="switch" index=4>
+                    <p>4</p>
+                </div>
+                <div class="switch" index=5>
+                    <p>5</p>
+                </div>
+                <div class="switch" index=6>
+                    <p>6</p>
+                </div>
+            </div>
+            <p>超立方体的八个胞</p>
+            <p>类似立方体，超立方体用了八个胞（三维物体）包围出一块四维空间</p>
+            <canvas class="center" id="tesseract-eight-cells" width="500" height="500"></canvas>
+            <div class="toggle_controller" id="tesseract-eight-cell-switches">
+                <div class="switch selected" index=0>
+                    <p> </p>
+                </div>
+                <div class="switch" index=1>
+                    <p>1</p>
+                </div>
+                <div class="switch" index=2>
+                    <p>2</p>
+                </div>
+                <div class="switch" index=3>
+                    <p>3</p>
+                </div>
+                <div class="switch" index=4>
+                    <p>4</p>
+                </div>
+                <div class="switch" index=5>
+                    <p>5</p>
+                </div>
+                <div class="switch" index=6>
+                    <p>6</p>
+                </div>
+                <div class="switch" index=7>
+                    <p>7</p>
+                </div>
+                <div class="switch" index=8>
+                    <p>8</p>
+                </div>
+            </div>
+            <p>立方体在XZ平面旋转一圈的平面投影</p>
+            <p>旋转下面的立方体，注意观察其平面的投影</p>
+            <canvas class="center" id="three-dimension-perspect-cube-rotate-a-round"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="cube-rotate-angle-range" type="range" min="-180" max="180" value="0" step="1"
+                        class="slider">
+                </div>
+            </div>
+            <p>超立方体在XZ平面旋转一圈的三维投影</p>
+            <p>旋转下面的超立方体，注意观察它在三维空间的投影的变化，寻找与上面立方体旋转一圈在平面上的投影的相似之处。</p>
+            <canvas class="center" id="tesseract-rotate-a-round" width="500" height="500"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="yw-angle-slider" type="range" min="-180" max="180" value="0" step="1" class="slider">
+                </div>
+            </div>
+        </div>
+        <h1>截面法</h1>
+        <div>
+            <p>三维物体穿过二维截面</p>
+            <p>移动旋转立方体，观察它与截面产生的形状。</p>
+            <canvas class="center" id="cube-intersection" width="500" height="500"></canvas>
+            <div class="sliders">
+                <div class="slider-container">
+                    <input id="cube-intersection-z-slider" type="range" min="-1" max="1" value="0" step="0.01"
+                        class="slider">
+                </div>
+            </div>
+            <p>四维物体穿过三维空间</p>
+            <p>对超立方体的第四维进行操作，在W轴上移动，XW、YW、ZW平面上旋转。观察其形状的变化。</p>
+            <canvas class="center" id="tesseract-intersection" width="500" height="500"></canvas>
+            <div class="sliders">
+                <div>
+                    <div class="slider-container">
+                        <span>W</span><input title="w" id="tesseract-intersection-w-slider" type="range" min="-1"
+                            max="1" value="0" step="0.01" class="slider">
+                    </div>
+                    <div class="slider-container">
+                        <span>XW</span><input title="xw" id="tesseract-intersection-xw-slider" type="range" min="-180"
+                            max="180" value="0" step="1" class="slider">
+                    </div>
+                    <div class="slider-container">
+                        <span>YW</span><input title="yw" id="tesseract-intersection-yw-slider" type="range" min="-180"
+                            max="180" value="0" step="1" class="slider">
+                    </div>
+                    <div class="slider-container">
+                        <span>ZW</span><input title="zw" id="tesseract-intersection-zw-slider" type="range" min="-180"
+                            max="180" value="0" step="1" class="slider">
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <h1>体素渲染</h1>
+        <div>
+            <p>二维平面渲染三维物体用的是一个个三角面片组合，可以推断三维空间渲染四维物体可以用一个个四面体组合。</p>
+        </div>
+        
+        <h1>超几何体</h1>
+        <h2>透视</h2>
+        <div>
+            <a class="center" target="_blank" href="/draw/projection/geometry-browser.html#Tesseract">超立方体</a>
+        </div>
+        <!-- <p></p>
+        <div>
+            <a class="center" target="_blank" href="/draw/projection/geometry-browser.html#HyperSphere">超球体</a>
+        </div> -->
+        <h2>截面</h2>
+        <div>
+            <a class="center" target="_blank" href="/draw/intersect/geometry-browser.html#Tesseract">超立方体</a>
+        </div>
+        <p></p>
+        <div>
+            <a class="center" target="_blank" href="/draw/intersect/geometry-browser.html#HyperSphere">超球体</a>
+        </div>
+        <h2>RayMarching</h2>
+        <div>
+            <a class="center" target="_blank" href="/draw/ray-marching/geometry-browser.html#Tesseract">超立方体</a>
+        </div>
+        <p></p>
+        <div>
+            <a class="center" target="_blank" href="/draw/ray-marching/geometry-browser.html#HyperSphere">超球体</a>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/p5/lib/p5.min.js"></script> -->
+    <script src="/js/index_p5.js" type="module"></script>
+    <script src="/js/index_WebGL.js" type="module"></script>
+    <!-- <script src="/js/FourDimension_WebGL.js" type="module"></script> -->
+</body>
+
 </html>

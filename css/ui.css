@@ -1,0 +1,233 @@
+.transform4D .translate4D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.transform4D .translate4D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform4D .translate4D input{
+    width: 60px;
+}
+
+.transform4D .rotate4D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform4D .rotate4D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform4D .rotate4D input{
+    width: 60px;
+}
+
+.transform4D .scale4D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform4D .scale4D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform4D .scale4D input{
+    width: 60px;
+}
+
+
+.transform3D .translate3D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.transform3D .translate3D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform3D .translate3D input{
+    width: 60px;
+}
+
+.transform3D .rotate3D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform3D .rotate3D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform3D .rotate3D input{
+    width: 60px;
+}
+
+.transform3D .scale3D{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.transform3D .scale3D label{
+    width: 30px;
+    align-self: center;
+    text-align: center;
+}
+.transform3D .scale3D input{
+    width: 60px;
+}
+
+.camera4DprojectParameter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.camera4DprojectParameter label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera4DprojectParameter input{
+    width: 30px;
+}
+
+.camera4DperspectiveParam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera4DperspectiveParam label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera4DperspectiveParam input{
+    width: 60px;
+}
+
+.camera4DclipPlane{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera4DclipPlane label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera4DclipPlane input{
+    width: 60px;
+}
+
+.camera3DorthographicParam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera3DorthographicParam label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera3DorthographicParam input{
+    width: 60px;
+}
+
+.camera3DperspectiveParam{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera3DperspectiveParam label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera3DperspectiveParam input{
+    width: 60px;
+}
+
+.camera3DclipPlane{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera3DclipPlane label{
+    width: 60px;
+    align-self: center;
+    text-align: center;
+}
+.camera3DclipPlane input{
+    width: 60px;
+}
+
+.camera4Dparameter .projectType{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+.camera4Dparameter .projectType label{
+    width: 40px;
+    align-self: center;
+    text-align: center;
+}
+.camera4Dparameter .projectType select{
+    width: 100px;
+    align-self: center;
+}
+
+.camera3Dparameter .projectType{
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.camera3Dparameter .projectType label{
+    width: 40px;
+    align-self: center;
+    text-align: center;
+}
+.camera3Dparameter .projectType select{
+    width: 100px;
+    align-self: center;
+}
+
+.camera3D{
+    margin: auto;
+}
+.camera4D{
+    margin: auto;
+}
+
+.orthographic .camera4DperspectiveParam{
+    display: none;
+}
+
+.perspective .camera4DprojectParameter{
+    display: none;
+}
+
+.orthographic .camera3DperspectiveParam{
+    display: none;
+}
+
+.perspective .camera3DprojectParameter{
+    display: none;
+}

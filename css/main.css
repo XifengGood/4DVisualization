@@ -1,0 +1,18 @@
+html, body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.center{
+    display: block;
+    margin: auto;
+}
+.has-text-align-center{
+    text-align: center;
+}

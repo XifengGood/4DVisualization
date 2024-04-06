@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.slider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+
+}
+.slider-container span{
+    width: 2rem;
+    align-self: center;
+    text-align: center;
+}
+.slider-container .slider {
+    width: 300px;
+}

@@ -1,0 +1,39 @@
+figure table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+figure table thead th:nth-child(1) {
+    width: 10%;
+}
+
+figure table thead th:nth-child(2) {
+    width: 15%;
+}
+
+figure table thead th:nth-child(3) {
+    width: 10%;
+}
+
+figure table thead th:nth-child(4) {
+    width: 15%;
+}
+
+figure table thead th:nth-child(5) {
+    width: 20%;
+}
+
+figure table thead th:nth-child(6) {
+    width: 30%;
+}
+
+
+figure table tbody {
+    text-align: center;
+}
+
+
+figure table tbody tr:nth-child(odd) {
+    background-color: aliceblue;
+}
