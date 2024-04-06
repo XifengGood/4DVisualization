@@ -3,7 +3,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
-import { RayMarchingShader } from './shaders/ray-marching';
 import { Rotate4DMatrix } from '../component/base';
 import { RayMarchingHyperSphereShader } from './shaders/ray-marching-hyperSphere';
 import { mat4 } from 'gl-matrix';

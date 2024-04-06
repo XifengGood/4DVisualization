@@ -14,7 +14,6 @@ import { ConvexHull } from 'three/examples/jsm/math/ConvexHull';
 import { Edge, Face, Mesh3D, Vertex3D } from "./component/mesh.js";
 import { intersect3Dplane } from "./component/base.js";
 
-
 // 从这里开始
 function main() {
 

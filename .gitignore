@@ -3,3 +3,4 @@ package.json
 package-lock.json
 local/**/*
 **/.DS_Store
+dist
